@@ -2,50 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EarnEXM App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EarnEXM Pro</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <header class="top-bar">
-        <div class="balance-container">
-            <span id="balance-exm">0 EXM</span> | <span id="balance-usd">$0.0000</span>
-        </div>
-    </header>
+    <div class="balance-wrapper">
+        <div class="exm-side">EXM: <span id="balance-exm">0</span></div>
+        <div class="usdt-side">USDT: <span id="balance-usdt">0.00000</span></div>
+    </div>
 
-    <main class="app-content">
-        <div class="wheel-section">
-            <canvas id="wheel-canvas" width="300" height="300"></canvas>
-            <div class="pointer"></div>
-        </div>
-
-        <button onclick="spinWheel()" class="btn-spin">SPIN & WIN</button>
-
-        <div class="grid-buttons">
-            <button onclick="handleDaily()" class="btn-3d">🎁 Daily Gift</button>
-            <button onclick="openEarn()" class="btn-3d">🤑 Earn EXM</button>
-            <button onclick="handleLucky()" class="btn-3d">🏆 Lucky Draw</button>
-        </div>
-
-        <div id="earn-modal" class="modal hidden">
-            <div class="modal-content">
-                <h2 id="task-title">New Task Available</h2>
-                <div id="task-area">
-                    <button id="task-link-btn" class="btn-3d" style="background:#28a745">50 EXM 🤑</button>
-                    <p class="warning">⚠️ Warning: Stay 20s+ on link or get BANNED!</p>
-                    <h1 id="countdown" class="hidden">60</h1>
-                </div>
-                <button id="claim-task-btn" class="btn-3d hidden">Claim 50 EXM</button>
-                <button onclick="closeEarn()" class="btn-3d" style="background:#ff4444">Close</button>
+    <main id="main-content">
+        <section id="view-spin" class="view">
+            <div class="wheel-box">
+                <div class="pointer"></div>
+                <canvas id="wheel-canvas" width="320" height="320"></canvas>
             </div>
-        </div>
+            <button id="spin-btn" class="btn-main-yellow" onclick="handleSpin()">SPIN & WIN</button>
+            <div class="wheel-extras">
+                <button onclick="openDaily()">🎁 Daily Gift</button>
+                <button onclick="claimPending()">💰 Claim</button>
+            </div>
+        </section>
+
+        <section id="view-earn" class="view hidden">
+            <div class="task-card">
+                <p class="task-msg">Please stay and click on the advertiser's page for at least 1 minute for the process to succeed!</p>
+                <div class="timer-display">
+                    <span id="timer-icon">⏲️</span>
+                    <h1 id="timer-sec">60</h1>
+                </div>
+                <button id="task-btn" class="btn-task-pro" onclick="handleTask()">Give me a task</button>
+            </div>
+        </section>
+
+        <section id="view-lucky" class="view hidden">
+            <div class="lucky-header">
+                <h2>Weekly Lucky Draw</h2>
+                <p>Ends: Every Friday 00:00 UTC</p>
+            </div>
+            <div class="lucky-pool">
+                <p>Participate with your EXM to win up to $100!</p>
+                <input type="number" id="lucky-amount" placeholder="Amount of EXM">
+                <button onclick="enterLucky()" class="btn-main-yellow">Enter Draw</button>
+            </div>
+        </section>
+
+        <section id="view-wallet" class="view hidden">
+            <div class="wallet-box">
+                <input type="text" id="wallet-address" placeholder="Enter USDT (TRC20) Address">
+                <input type="number" id="withdraw-amount" placeholder="Amount to Withdraw">
+                <button onclick="requestWithdraw()" class="btn-main-yellow">Withdraw</button>
+            </div>
+            <hr style="margin: 20px 0; opacity: 0.1;">
+            <p style="font-size: 0.7rem; color: #555;">Support: report problems to admin</p>
+        </section>
     </main>
 
     <nav class="bottom-nav">
-        <button onclick="showSection('home')">Home</button>
-        <button onclick="showSection('affiliate')">Affiliate</button>
-        <button onclick="showSection('withdraw')">Withdraw</button>
+        <button onclick="showView('view-spin')">Spin</button>
+        <button onclick="showView('view-earn')">Earn</button>
+        <button onclick="showView('view-lucky')">Lucky</button>
+        <button onclick="showView('view-wallet')">Wallet</button>
     </nav>
 
     <script type="module" src="script.js"></script>
