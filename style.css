@@ -1,107 +1,48 @@
+:root {
+    --dark-blue: radial-gradient(circle, #002d7a 0%, #000c24 100%);
+    --yellow: #ffcc00;
+    --green: #28a745;
+    --pink: #ff4d94;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: radial-gradient(circle at center, #0052d4, #002d7a, #001a4d);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden;
+    margin: 0; background: var(--dark-blue); color: white;
+    font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden;
 }
 
-.top-bar {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 15px 25px;
-    border-radius: 0 0 25px 25px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    font-weight: 800;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    color: #00d2ff;
+.balance-wrapper {
+    display: flex; width: 90%; margin: 15px auto; border-radius: 12px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1); font-weight: bold;
+}
+.exm-side { background: var(--yellow); color: black; flex: 1; padding: 10px; }
+.usdt-side { background: var(--green); color: black; flex: 1; padding: 10px; }
+
+.view { flex: 1; display: flex; flex-direction: column; align-items: center; padding-top: 30px; }
+.hidden { display: none !important; }
+
+/* Wheel */
+.wheel-box { position: relative; margin-bottom: 20px; }
+.pointer { 
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    width: 30px; height: 30px; background: var(--pink); clip-path: polygon(50% 100%, 0 0, 100% 0); z-index: 10;
 }
 
-.main-container {
-    margin-top: 100px;
-    width: 90%;
-    max-width: 400px;
+/* Buttons 3D */
+.btn-main-yellow {
+    background: var(--yellow); color: black; border: none; border-radius: 15px;
+    padding: 15px 40px; font-weight: 900; box-shadow: 0 5px 0 #ccaa00; cursor: pointer;
 }
+.btn-main-yellow:active { transform: translateY(3px); box-shadow: 0 2px 0 #ccaa00; }
 
-/* زر SPIN 3D حقيقي */
-.btn-spin {
-    background: linear-gradient(180deg, #ffde00 0%, #ff9500 100%);
-    color: #332200;
-    border: none;
-    padding: 20px 0;
-    width: 100%;
-    border-radius: 20px;
-    font-size: 1.8rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    box-shadow: 0 8px 0 #b36b00, 0 15px 25px rgba(0,0,0,0.4);
-    cursor: pointer;
-    transition: all 0.1s;
-    margin-bottom: 40px;
-}
-
-.btn-spin:active {
-    box-shadow: 0 2px 0 #b36b00;
-    transform: translateY(6px);
-}
-
-/* الأزرار الصغيرة متناسقة */
-.grid-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-}
-
-.btn-3d {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 18px;
-    padding: 15px 5px;
-    color: #ffffff;
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    transition: 0.3s;
-}
-
-.btn-3d:hover {
-    background: rgba(0, 210, 255, 0.2);
-    border-color: #00d2ff;
+.btn-task-pro {
+    background: var(--yellow); color: var(--green); border: none; border-radius: 10px;
+    padding: 20px 50px; font-size: 1.5rem; font-weight: 900; margin-top: 20px;
 }
 
 .bottom-nav {
-    position: fixed;
-    bottom: 20px;
-    width: 90%;
-    max-width: 400px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(15px);
-    display: flex;
-    border-radius: 25px;
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0,0,0,0.8); display: flex; height: 70px; border-top: 1px solid rgba(255,255,255,0.1);
 }
+.bottom-nav button { flex: 1; background: none; border: none; color: white; font-weight: bold; }
 
-.nav-item {
-    flex: 1;
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 0.9rem;
-    font-weight: bold;
-    padding: 10px;
-}
-
-.nav-item.active {
-    color: #00d2ff;
-}
+.task-card { width: 85%; text-align: center; }
+.timer-display { margin: 20px 0; color: var(--yellow); }
