@@ -5,45 +5,100 @@
     <title>Earnexm - Eriuxum Engine</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; }
-        #main-view { margin-top: 50px; }
-        #view-title { font-size: 28px; margin-bottom: 20px; }
-        #view-desc { font-size: 18px; margin-bottom: 30px; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: #fff;
+            text-align: center;
+        }
+
+        #main-view {
+            margin-top: 50px;
+        }
+
+        #view-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #view-desc {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
         .btn-main {
             display: inline-block;
             margin: 10px;
             width: 150px;
             height: 60px;
             border-radius: 12px;
-            box-shadow: 4px 4px 10px rgba(0,0,0,0.5), -4px -4px 10px rgba(255,255,255,0.1);
+            box-shadow:
+                4px 4px 10px rgba(0,0,0,0.5),
+               -4px -4px 10px rgba(255,255,255,0.1);
             cursor: pointer;
             background-size: cover;
             background-position: center;
             transition: all 0.2s ease;
         }
-        .btn-main:hover { transform: translateY(-3px); box-shadow: 6px 6px 12px rgba(0,0,0,0.5), -6px -6px 12px rgba(255,255,255,0.1); }
-        #exm-display, #usd-display { font-weight: bold; font-size: 20px; }
-        #timer-box { margin: 10px; font-size: 18px; }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                6px 6px 12px rgba(0,0,0,0.5),
+               -6px -6px 12px rgba(255,255,255,0.1);
+        }
+
+        #exm-display,
+        #usd-display {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #timer-box {
+            margin: 10px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
 
 <h1>Earnexm - Eriuxum Engine</h1>
-<p>EXM Balance: <span id="exm-display">0</span> | USD: <span id="usd-display">$0.00</span></p>
+<p>
+    EXM Balance:
+    <span id="exm-display">0</span>
+    |
+    USD:
+    <span id="usd-display">$0.00</span>
+</p>
 
 <div id="main-view">
     <div id="view-title">HOME</div>
     <div id="view-desc">Select a button below</div>
 </div>
 
-<!-- الأزرار -->
+<!-- BUTTONS -->
 <div>
-    <div class="btn-main" onclick="switchTab('spin')" style="background-image: url('spin.png');"></div>
-    <div class="btn-main" onclick="switchTab('ads')" style="background-image: url('tasks.png');"></div>
-    <div class="btn-main" onclick="switchTab('social')" style="background-image: url('social.png');"></div>
-    <div class="btn-main" onclick="switchTab('withdraw')" style="background-image: url('withdraw.png');"></div>
+    <div class="btn-main"
+         onclick="switchTab('spin')"
+         style="background-image: url('spin.jpg');">
+    </div>
+
+    <div class="btn-main"
+         onclick="switchTab('ads')"
+         style="background-image: url('tasks.jpg');">
+    </div>
+
+    <div class="btn-main"
+         onclick="switchTab('social')"
+         style="background-image: url('social.jpg');">
+    </div>
+
+    <div class="btn-main"
+         onclick="switchTab('withdraw')"
+         style="background-image: url('withdraw.jpg');">
+    </div>
 </div>
 
 <script src="script.js"></script>
 </body>
-</html>
+    </html>
