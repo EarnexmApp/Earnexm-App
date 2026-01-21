@@ -1,72 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>EarnEXM Pro</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<meta charset="UTF-8">
+<title>Earnexm - Eriuxum Engine</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: Arial, sans-serif; background: #1A237E; color: #fff; text-align: center; margin:0; padding:0; }
+header { padding: 10px; background: linear-gradient(to right, #FFEB3B 50%, #4CAF50 50%); color: black; font-weight: bold; }
+header span { margin-left: 10px; font-weight: normal; }
+#main-view { padding: 20px; }
+#view-title { font-size: 28px; margin-bottom: 20px; }
+#view-desc { font-size: 18px; margin-bottom: 30px; }
+.btn-main {
+    display: inline-block;
+    margin: 10px;
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5), -4px -4px 10px rgba(255,255,255,0.1);
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.2s ease;
+}
+.btn-main:hover { transform: translateY(-5px); box-shadow: 6px 6px 12px rgba(0,0,0,0.5), -6px -6px 12px rgba(255,255,255,0.1); }
+#timer-box { margin: 10px; font-size: 18px; }
+</style>
 </head>
 <body>
-    <div class="balance-wrapper">
-        <div class="exm-side">EXM: <span id="balance-exm">0</span></div>
-        <div class="usdt-side">USDT: <span id="balance-usdt">0.00000</span></div>
-    </div>
 
-    <main id="main-content">
-        <section id="view-spin" class="view">
-            <div class="wheel-box">
-                <div class="pointer"></div>
-                <canvas id="wheel-canvas" width="320" height="320"></canvas>
-            </div>
-            <button id="spin-btn" class="btn-main-yellow" onclick="handleSpin()">SPIN & WIN</button>
-            <div class="wheel-extras">
-                <button onclick="openDaily()">🎁 Daily Gift</button>
-                <button onclick="claimPending()">💰 Claim</button>
-            </div>
-        </section>
+<header>
+  EXM Balance: <span id="exm-display">0</span> | USD: <span id="usd-display">$0.00</span>
+</header>
 
-        <section id="view-earn" class="view hidden">
-            <div class="task-card">
-                <p class="task-msg">Please stay and click on the advertiser's page for at least 1 minute for the process to succeed!</p>
-                <div class="timer-display">
-                    <span id="timer-icon">⏲️</span>
-                    <h1 id="timer-sec">60</h1>
-                </div>
-                <button id="task-btn" class="btn-task-pro" onclick="handleTask()">Give me a task</button>
-            </div>
-        </section>
+<div id="main-view">
+  <div id="view-title">Back</div>
+  <div id="view-desc">Select a button below</div>
+</div>
 
-        <section id="view-lucky" class="view hidden">
-            <div class="lucky-header">
-                <h2>Weekly Lucky Draw</h2>
-                <p>Ends: Every Friday 00:00 UTC</p>
-            </div>
-            <div class="lucky-pool">
-                <p>Participate with your EXM to win up to $100!</p>
-                <input type="number" id="lucky-amount" placeholder="Amount of EXM">
-                <button onclick="enterLucky()" class="btn-main-yellow">Enter Draw</button>
-            </div>
-        </section>
+<!-- الأزرار الرئيسية -->
+<div>
+    <div class="btn-main" id="btn-spin" onclick="switchTab('spin')" style="background-image: url('spin.jpg');"></div>
+    <div class="btn-main" id="btn-earn" onclick="switchTab('earn')" style="background-image: url('earn.jpg');"></div>
+    <div class="btn-main" id="btn-affiliate" onclick="switchTab('affiliate')" style="background-image: url('affiliate.jpg');"></div>
+    <div class="btn-main" id="btn-lucky" onclick="switchTab('lucky')" style="background-image: url('lucky.jpg');"></div>
+    <div class="btn-main" id="btn-withdraw" onclick="switchTab('withdraw')" style="background-image: url('withdraw.jpg');"></div>
+</div>
 
-        <section id="view-wallet" class="view hidden">
-            <div class="wallet-box">
-                <input type="text" id="wallet-address" placeholder="Enter USDT (TRC20) Address">
-                <input type="number" id="withdraw-amount" placeholder="Amount to Withdraw">
-                <button onclick="requestWithdraw()" class="btn-main-yellow">Withdraw</button>
-            </div>
-            <hr style="margin: 20px 0; opacity: 0.1;">
-            <p style="font-size: 0.7rem; color: #555;">Support: report problems to admin</p>
-        </section>
-    </main>
-
-    <nav class="bottom-nav">
-        <button onclick="showView('view-spin')">Spin</button>
-        <button onclick="showView('view-earn')">Earn</button>
-        <button onclick="showView('view-lucky')">Lucky</button>
-        <button onclick="showView('view-wallet')">Wallet</button>
-    </nav>
-
-    <script type="module" src="script.js"></script>
-</body>
-</html>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+// Firebase Configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyD3xCKkyQT-6FO
