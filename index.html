@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Earn EXM</title>
+  <link rel="stylesheet" href="style.css">
 
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+
+<h2>💰 رصيدك: <span id="balance">0</span> EXM</h2>
+
+<div class="buttons">
+  <img src="images/earn_task.jpg" onclick="earnTask()">
+  <img src="images/daily_gift.jpg" onclick="dailyGift()">
+  <img src="images/lucky_draw.jpg" onclick="openWheel()">
+  <img src="images/withdraw.jpg" onclick="withdraw()">
+</div>
+
+<!-- عجلة الحظ -->
+<div id="wheelBox" class="modal">
+  <img src="images/spinwheel.jpg" onclick="spinWheel()">
+  <img src="images/add_exm.jpg" onclick="addMoreEXM()">
+  <img src="images/close.jpg" onclick="closeWheel()">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
