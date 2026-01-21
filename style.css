@@ -1,26 +1,107 @@
-body { margin: 0; background: #0046be; color: white; font-family: 'Arial', sans-serif; text-align: center; overflow-x: hidden; }
-.top-bar { background: rgba(0,0,0,0.5); padding: 15px; position: fixed; top: 0; width: 100%; border-bottom: 2px solid #00d2ff; font-weight: bold; font-size: 1.2rem; }
-.app-content { margin-top: 100px; padding: 20px; }
-.wheel-section { position: relative; display: inline-block; margin-bottom: 20px; }
-.pointer { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; background: red; clip-path: polygon(50% 100%, 0 0, 100% 0); z-index: 10; }
-
-/* Buttons 3D style */
-.btn-spin { 
-    background: linear-gradient(180deg, #ffcc00, #ff9900); 
-    border: none; border-bottom: 5px solid #cc7700; 
-    padding: 15px 40px; border-radius: 50px; font-size: 1.5rem; font-weight: bold; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-bottom: 30px;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(circle at center, #0052d4, #002d7a, #001a4d);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
-.btn-3d { 
-    background: #0056e0; border: none; border-bottom: 4px solid #002d7a; 
-    padding: 12px; border-radius: 12px; color: white; font-weight: bold; flex: 1;
-}
-.btn-3d:active, .btn-spin:active { transform: translateY(3px); border-bottom-width: 1px; }
 
-.grid-buttons { display: flex; gap: 10px; margin-top: 20px; }
-.modal { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:1000; }
-.modal-content { background:#00328a; padding:30px; border-radius:20px; border:2px solid #00d2ff; width:85%; }
-.hidden { display: none !important; }
-.warning { color: #ff4444; font-size: 0.8rem; margin: 15px 0; font-weight: bold; }
-.bottom-nav { position: fixed; bottom: 0; width: 100%; display: flex; background: #00328a; padding: 10px 0; border-top: 1px solid #00d2ff; }
-.bottom-nav button { flex: 1; background: none; border: none; color: white; font-weight: bold; }
+.top-bar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 0 0 25px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color: #00d2ff;
+}
+
+.main-container {
+    margin-top: 100px;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* زر SPIN 3D حقيقي */
+.btn-spin {
+    background: linear-gradient(180deg, #ffde00 0%, #ff9500 100%);
+    color: #332200;
+    border: none;
+    padding: 20px 0;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 0 8px 0 #b36b00, 0 15px 25px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: all 0.1s;
+    margin-bottom: 40px;
+}
+
+.btn-spin:active {
+    box-shadow: 0 2px 0 #b36b00;
+    transform: translateY(6px);
+}
+
+/* الأزرار الصغيرة متناسقة */
+.grid-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.btn-3d {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    padding: 15px 5px;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-3d:hover {
+    background: rgba(0, 210, 255, 0.2);
+    border-color: #00d2ff;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 20px;
+    width: 90%;
+    max-width: 400px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    display: flex;
+    border-radius: 25px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-item {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.nav-item.active {
+    color: #00d2ff;
+}
