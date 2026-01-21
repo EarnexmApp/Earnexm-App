@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Earnexm - Eriuxum Official</title>
+    <style>
+        :root { --gold: #ffd700; --bg: #0a0a0a; --card: #161616; --accent: #00ffcc; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        .header { padding: 20px; text-align: center; border-bottom: 1px solid #333; }
+        .logo { color: var(--gold); font-size: 28px; font-weight: bold; letter-spacing: 2px; }
+        
+        .balance-section { background: var(--card); margin: 20px; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid #333; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .exm-val { font-size: 35px; color: var(--gold); font-weight: bold; margin: 10px 0; }
+        .usd-val { color: #888; font-size: 18px; }
+
+        .action-area { padding: 20px; text-align: center; min-height: 300px; }
+        
+        /* Navigation Bar */
+        .nav-bar { position: fixed; bottom: 0; width: 100%; background: #111; display: grid; grid-template-columns: repeat(6, 1fr); padding: 10px 0; border-top: 1px solid var(--accent); }
+        .nav-item { color: #666; text-decoration: none; font-size: 9px; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+        .nav-item.active { color: var(--accent); }
+        .nav-icon { font-size: 18px; }
+
+        .btn-main { background: var(--accent); color: #000; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .btn-main:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">EARNEXM</div>
+    </div>
+
+    <div class="balance-section">
+        <div style="color: #aaa;">Current Eriuxum (EXM)</div>
+        <div class="exm-val" id="exm-display">0.00</div>
+        <div class="usd-val" id="usd-display">$0.00</div>
+    </div>
+
+    <div class="action-area" id="main-view">
+        <h2 id="view-title">Welcome InisTa</h2>
+        <p id="view-desc">Start earning EXM by completing simple tasks.</p>
+        <button class="btn-main" onclick="handleMainAction()">EARN NOW</button>
+    </div>
+
+    <nav class="nav-bar">
+        <div class="nav-item" onclick="switchTab('ref')"><span class="nav-icon">👥</span>Ref</div>
+        <div class="nav-item" onclick="switchTab('spin')"><span class="nav-icon">🎡</span>Spin</div>
+        <div class="nav-item active" onclick="switchTab('ads')"><span class="nav-icon">🔗</span>Ads</div>
+        <div class="nav-item" onclick="switchTab('social')"><span class="nav-icon">📱</span>Social</div>
+        <div class="nav-item" onclick="switchTab('pool')"><span class="nav-icon">🏆</span>Pool</div>
+        <div class="nav-item" onclick="switchTab('draw')"><span class="nav-icon">💰</span>Withdraw</div>
+    </nav>
+
+    <script>
+        function switchTab(tab) {
+            const views = {
+                'ref': 'Invite friends and earn EXM for each referral.',
+                'spin': 'Try your luck! 20 free spins available for new users.',
+                'ads': 'Complete 1000+ available ad tasks to boost balance.',
+                'social': 'Join our channels and follow us for rewards.',
+                'pool': 'Community Pool: Top 40 users win big prizes!',
+                'draw': 'Withdraw your earnings. Minimum 10 USDT.'
+            };
+            document.getElementById('view-title').innerText = tab.toUpperCase();
+            document.getElementById('view-desc').innerText = views[tab];
+            
+            // Highlight active tab
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            // In a real app, we would target the specific element
+        }
+
+        function handleMainAction() {
+            alert("Ready to start the mission?");
+        }
+    </script>
+</body>
+</html>
